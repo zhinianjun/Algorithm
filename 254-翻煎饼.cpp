@@ -12,24 +12,25 @@ using namespace std;
 bool is_sorted(int*, int);
 int max_positon(int*, int);
 void turn(int*, int);
-int find_pos(int*, int);
+int sorted_nums(int*, int);
 
 int main() {
-    int pancake_list[5] = {5, 4, 2, 3, 1};
+    int pancake_list[5] = {1, 2, 3, 4, 5};
     int count = 5;
     
+    cout << sorted_nums(pancake_list, count) << endl;
     
-    while(!is_sorted(pancake_list, count)){
-        int right_pos = 0;
-        int pos = max_positon(pancake_list, count);
+    // while(!is_sorted(pancake_list, count)){
+    //     int right_pos = 0;
+    //     int pos = max_positon(pancake_list, count);
 
-        if (pos == 0){
-            turn(pancake_list, right_pos);
-        }else{
-            turn(pancake_list, pos);
-            turn(pancake_list, right_pos);
-        }
-    }
+    //     if (pos == 0){
+    //         turn(pancake_list, right_pos);
+    //     }else{
+    //         turn(pancake_list, pos);
+    //         turn(pancake_list, right_pos);
+    //     }
+    // }
 
     return 0;
 }
@@ -65,11 +66,17 @@ void turn(int* pancake_list, int pos){
     }
 }
 
-int find_pos(int* pancake_list, int count){
-
-    int max_index = max_positon(pancake_list, count);
-    if(max_index == count-1)
-        find_pos(pancake_list, count-1);
-    else
-    return max_index;
+int sorted_nums(int* pancake_list, int count){
+  int max_size = 0, max_index = 0;
+    for(int i=0; i<count; i++)
+        if(pancake_list[i] > max_size)
+        {
+            max_size = pancake_list[i];
+            max_index = i;
+        }
+    if(max_index==count-1)
+      return sorted_nums(pancake_list, count-1) + 1;
+    else 
+      return 0;
+    
 }
