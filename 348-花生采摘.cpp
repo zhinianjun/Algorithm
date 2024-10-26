@@ -22,6 +22,10 @@ void insert(vector<struct  peanut> &peanuts, struct peanut& p)
     peanuts.push_back(p);
 }
 
+int distance(vector<struct peanut>& a, vector<struct peanut>& b){
+  return abs(a.x - b.x) + abs(a.y - b.y);
+}
+
 int main() {
     struct peanut fileds[20][20];
     int m, n;
@@ -46,7 +50,13 @@ int main() {
     steps-=2;
     while (steps > 0)
     {
-        
+      if(times == 0){
+        steps -= pick_sequence[times].y;
+        steps--;
+        times++;
+        total += pick_sequence[times].nums;
+      }
+      if(steps )
     }
     
     
