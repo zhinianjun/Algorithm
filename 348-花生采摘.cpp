@@ -22,12 +22,11 @@ void insert(vector<struct  peanut> &peanuts, struct peanut& p)
     peanuts.push_back(p);
 }
 
-int distance(vector<struct peanut>& a, vector<struct peanut>& b){
+int distance(struct peanut& a, struct peanut& b){
   return abs(a.x - b.x) + abs(a.y - b.y);
 }
 
 int main() {
-    struct peanut fileds[20][20];
     int m, n;
     int steps;
     vector<struct peanut> pick_sequence;
@@ -39,26 +38,35 @@ int main() {
         {
             int nums;
             cin>>nums;
-            fileds[i][j].x = i;
-            fileds[i][j].y = j;
-            fileds[i][j].nums = nums;
-            insert(pick_sequence, fileds[i][j]);
+            struct peanut p = {j, i, nums};
+            insert(pick_sequence, p);
         }
     
     int times = 0;
     int total = 0;
     steps-=2;
+    struct peanut current = {pick_sequence[0].x, 0, 0};
     while (steps > 0)
-    {
-      if(times == 0){
-        steps -= pick_sequence[times].y;
-        steps--;
-        times++;
-        total += pick_sequence[times].nums;
-      }
-      if(steps )
-    }
+    {  
+        //判断能否到达下一个花生
+        if(steps - distance(current, pick_sequence[times]) < 0)
+            break;
+        else{
+            steps -= distance(current, pick_sequence[times]);
+            steps -= 1;
+            total += pick_sequence[times].nums;
+            current = pick_sequence[times];
+            times++;
+        }
     
+        if(steps - current.y < 0)
+        {
+            
+            total -= current.nums;
+            break;
+        }
+    }
+    cout << total << endl;
     
     return 0;
 }

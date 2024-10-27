@@ -9,7 +9,6 @@ using namespace std;
     2 1 3 4 5
     1 2 3 4 5
 */
-bool is_sorted(int*, int);
 int max_positon(int*, int);
 void turn(int*, int);
 int sorted_nums(int*, int);
@@ -40,14 +39,6 @@ int main() {
     cout << turn_count << endl;
 
     return 0;
-}
-
-bool is_sorted(int* pancake_list, int count){
-    for(int i=0; i < count-1; i++){
-        if(pancake_list[i] > pancake_list[i+1])
-            return false;
-    }
-    return true;
 }
 
 int max_positon(int* pancake_list, int count){
