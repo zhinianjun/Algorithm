@@ -2,6 +2,7 @@
     "files.associations": {
         "*.txt": "plaintext",
         "ostream": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "xstring": "cpp"
     }
 }
