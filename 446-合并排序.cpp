@@ -49,12 +49,17 @@ int main(){
       
     mergeSort(source, temp, 0, n-1);
 
-    for(int i = 0; i < n; i++)
-    {
-      cout << source[i] << "  ";
-      if(i % 9 == 0 && i != 0)
-        cout << '\n';
-    }
-    // cout << '\n';
+	for(int i=0;i<n;i++){
+		if((i+1)%10==0){
+			printf("%d\n",source[i]);
+		}else{
+			if(i==n-1){
+				printf("%d\n",source[i]);
+			}else{
+				printf("%d  ",source[i]);
+			}
+		}
+	}
+
     return 0;
 }
