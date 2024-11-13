@@ -2,52 +2,59 @@
 
 using namespace std;
 
-void merge(int* source, int* target, int start, int mid, int end){
+void merge(int* source, int* temp, int start, int mid, int end){
     int i = start, j = mid+1, pos=start;
     while(i <= mid && j <= end){
         if(source[i] <= source[j])
         {
-            target[pos] = source[i];
+            temp[pos] = source[i];
             i++;
         }else{
-            target[pos] = source[j];
+            temp[pos] = source[j];
             j++;
         }
         pos++;
     }
     while(i <= mid) 
     {
-        target[pos] = source[i];
+        temp[pos] = source[i];
         i++;
         pos++;
     }
     while(j <= end){
-        target[pos] = source[j];
+        temp[pos] = source[j];
         j++;
         pos++;
     }
+    for(int i = start; i <= end; i++)
+      source[i] = temp[i];
 }
 
-void mergeSort(int* source, int* target, int start, int end){
+void mergeSort(int* source, int* temp, int start, int end){
     if(start < end){
         int mid = (start + end) / 2;
-        mergeSort(source, target, start, mid);
-        mergeSort(source, target, mid+1, end);
-        merge(source, target, start, mid, end);
-        for(int i = 0; i < 12; i++)
-            cout << target[i] << ' ';
-        cout << endl;
+        mergeSort(source, temp, start, mid);
+        mergeSort(source, temp, mid+1, end);
+        merge(source, temp, start, mid, end);
     }
 }
 
 int main(){
-    int n = 12;
-    int source[1000] = {45, 545 , 48, 47, 44, 45, 4857, 58, 57, 485, 1255, 42};
-    int target[1000] = {0};
+    int n;
+    int source[1000] = {0};
+    int temp[1000] = {0};
+    cin >> n;
+    for(int i = 0; i < n; i++)
+      cin >> source[i];
+      
+    mergeSort(source, temp, 0, n-1);
 
-    mergeSort(source, target, 0, 11);
-
-    // for(int i = 0; i < n; i++)
-    //     cout << target[i] << ' ';
+    for(int i = 0; i < n; i++)
+    {
+      cout << source[i] << "  ";
+      if(i % 9 == 0 && i != 0)
+        cout << '\n';
+    }
+    // cout << '\n';
     return 0;
 }
