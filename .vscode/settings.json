@@ -3,6 +3,7 @@
         "*.txt": "plaintext",
         "ostream": "cpp",
         "cstdlib": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "iostream": "cpp"
     }
 }
