@@ -23,19 +23,5 @@ int main()
     int n = str1.size(), m = str2.size();
     vector<vector<int>> mem(n, vector<int>(m, -1));
     cout << dfs(n-1, m-1, str1, str2, mem) << endl;
-    // for(int j=0; j<m+1; j++)
-    //     mem[0][j] = j;
-    // for(int i = 0; i<n; i++)
-    // {
-    //     mem[i+1][0] = i+1;
-    //     for(int j = 0; j < m; j++)
-    //     {
-    //         if(str1[i] == str2[j])
-    //             mem[i+1][j+1] = mem[i][j];
-    //         else
-    //             mem[i+1][j+1] = min({mem[i][j+1], mem[i+1][j], mem[i][j]})+1;
-    //     }
-    // }
-    // cout << mem[n][m] << endl;
     return 0;
 }
